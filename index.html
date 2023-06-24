@@ -190,7 +190,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-06-24 20:13:31 / 修改时间：21:44:10" itemprop="dateCreated datePublished" datetime="2023-06-24T20:13:31+08:00">2023-06-24</time>
+      <time title="创建时间：2023-06-24 20:13:31 / 修改时间：22:18:48" itemprop="dateCreated datePublished" datetime="2023-06-24T20:13:31+08:00">2023-06-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -220,6 +220,19 @@
 <h5 id="交换"><a href="#交换" class="headerlink" title="交换"></a>交换</h5><p><code>swap(q,p);</code></p>
 <p><code>p.swap(q)</code></p>
 <h2 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr</h2><p><strong>shared_ptr是一个类！！</strong></p>
+<h3 id="make-x2F-copy-x2F-assignment"><a href="#make-x2F-copy-x2F-assignment" class="headerlink" title="make&#x2F;copy&#x2F;assignment"></a>make&#x2F;copy&#x2F;assignment</h3><p>通过make_shared函数可以对其进行赋值操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shared_ptr&lt;<span class="type">int</span>&gt; p3 = <span class="built_in">make_shared</span>&lt;<span class="type">int</span>&gt;(<span class="number">42</span>);<span class="comment">//p3指向一个大小为42的int类型</span></span><br><span class="line">shared_ptr&lt;string&gt; p4 = <span class="built_in">make_shared</span>&lt;string&gt;(<span class="number">10</span>,<span class="string">&#x27;9&#x27;</span>); <span class="comment">//p4指向一个‘9999999999’的string类型</span></span><br><span class="line">shared_ptr&lt;<span class="type">int</span>&gt; p5 = <span class="built_in">make_shared</span>&lt;<span class="type">int</span>&gt;(); <span class="comment">//p5指向一个大小为0的int类型</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="通过auto进行赋值-x2F-拷贝"><a href="#通过auto进行赋值-x2F-拷贝" class="headerlink" title="通过auto进行赋值&#x2F;拷贝"></a>通过auto进行赋值&#x2F;拷贝</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> p6 = make_shared&lt;vector&lt;string&gt;&gt;(); <span class="comment">//p6指向一个空的vector&lt;string&gt;</span></span><br><span class="line"><span class="comment">//进行了拷贝，让q7和p7有了一样的指向对象，于是这个对象的引用次数会加1</span></span><br><span class="line"><span class="keyword">auto</span> p7= <span class="built_in">make_shared</span>&lt;<span class="type">int</span>&gt;(<span class="number">42</span>);</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">q7</span><span class="params">(p7)</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="reference-count"><a href="#reference-count" class="headerlink" title="reference count"></a>reference count</h4><p>当我们拷贝一个shared_ptr，reference count就会加1</p>
+<p>在局部域中，离开局部域后，计数会减去1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> r = <span class="built_in">make_shared</span>&lt;<span class="type">int</span>&gt;(<span class="number">42</span>);</span><br><span class="line">r = q; <span class="comment">//r被指向了另一个对象，r所指向的对象的引用次数减一后为0，其被引用对象自动被释放</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="通过自动销毁来管理使用对象"><a href="#通过自动销毁来管理使用对象" class="headerlink" title="通过自动销毁来管理使用对象"></a>通过自动销毁来管理使用对象</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">shared_ptr&lt;Foo&gt; <span class="title">factory</span><span class="params">(T arg)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">make_shared</span>&lt;Foo&gt;(arg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">use_factory</span><span class="params">(T arg)</span> </span>&#123;</span><br><span class="line">    shared_ptr&lt;Foo&gt; p = <span class="built_in">factory</span>(arg);</span><br><span class="line">    <span class="comment">//use p</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在factory中，构造了一个shared_ptr来指向一个构造的Foo，在之后use_factory函数中调用factory函数，之后使用这个对象，在函数结束后，p离开作用域，p所指向的对象由于引用次数减为0，自动销毁。这样可以很好地节省内存，用完就弃</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
