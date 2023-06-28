@@ -123,18 +123,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -151,6 +151,94 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://planctao.github.io/2023/06/28/%E7%B4%A0%E6%95%B0%E7%AD%9B%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="TZH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Plancc">
+      <meta itemprop="description" content="It is TZH blog.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Plancc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/06/28/%E7%B4%A0%E6%95%B0%E7%AD%9B%E6%B3%95/" class="post-title-link" itemprop="url">素数筛法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-06-28 21:26:11 / 修改时间：22:47:44" itemprop="dateCreated datePublished" datetime="2023-06-28T21:26:11+08:00">2023-06-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">算法学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="素数的筛法"><a href="#素数的筛法" class="headerlink" title="素数的筛法"></a>素数的筛法</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这个在大一的时候有所涉及，但是在刷leetcode的时候看到一道题目<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-beautiful-pairs/">2748. 美丽下标对的数目</a> 就像这重新回顾一下这部分内容</p>
+<h2 id="埃氏筛法"><a href="#埃氏筛法" class="headerlink" title="埃氏筛法"></a>埃氏筛法</h2><h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>埃氏筛法的核心思想就是：读取到一个素数的时候，就将这个素数的所有倍数，比如2倍，3倍，4倍…全部都设置为合数</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> map[<span class="number">10000</span>];<span class="comment">//用hash的方式存储所有数，0为素数，1为合数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">eratosthenes_prime</span><span class="params">(<span class="type">int</span> maxN)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> *primer_list = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="type">int</span>) * maxN);<span class="comment">//设置素数列表</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>;i &lt; maxN;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (map[i] == <span class="number">1</span>) &#123;<span class="comment">//如果这个数已经被标记为合数了，跳过</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j =i + i;j &lt;= maxN;j+=i) &#123;<span class="comment">//将这个素数的所有倍数都设置为1</span></span><br><span class="line">            map[j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>很明显有个缺点：有些数会被多次枚举，比如算12的时候，2*6和3*4的时候都要算一遍，这个时间复杂度就高了，埃氏筛法的时间复杂度是O（n&#x2F;2+n&#x2F;2+n&#x2F;5+…），即O（nloglog2n）</p>
+<h2 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h2><h3 id="思想-1"><a href="#思想-1" class="headerlink" title="思想"></a>思想</h3><p>核心思想就是要改进埃氏筛法的重复计算的问题，解决方法是，将所有的已经被列为素数的数都记录下来，每次计算到一个新的素数，都乘以这个素数列表里的数，而不是2倍，3倍这么算，原因是：任何一个数都可以由素数相乘获得。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">euler_prime</span><span class="params">(<span class="type">int</span> maxN)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> *primer_list = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="type">int</span>) * maxN);</span><br><span class="line">    <span class="built_in">memset</span>(primer_list,<span class="number">0</span>,<span class="built_in">sizeof</span>(<span class="type">int</span>) * maxN);</span><br><span class="line">    <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>;i &lt;= maxN;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (map[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            primer_list[cnt++] = i;</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>;j &lt; cnt &amp;&amp; primer_list[j] * i &lt;= maxN;j++) &#123;</span><br><span class="line">            map[i * primer_list[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % primer_list[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>有个必要的注意点是，当我们在素数列表，也就是primer_list里面枚举没一个素数的过程中，一旦某个素数可以整除当前的这个目标数的时候，我们就要取消后续的枚举了</p>
+<p>举个例子，比如8&#x3D;2*4因此我们不应该继续计算3*8了，那是因为3*8 &#x3D; 3*2*2*2 &#x3D; 2*12 因此我们在枚举12的时候已经会枚举到24这个数了，没必要再枚举了3*8了</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
