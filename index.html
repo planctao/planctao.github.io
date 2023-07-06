@@ -188,9 +188,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-06-29 20:13:44 / 修改时间：22:04:20" itemprop="dateCreated datePublished" datetime="2023-06-29T20:13:44+08:00">2023-06-29</time>
+      <time title="创建时间：2023-06-29 20:13:44" itemprop="dateCreated datePublished" datetime="2023-06-29T20:13:44+08:00">2023-06-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-03 22:10:12" itemprop="dateModified" datetime="2023-07-03T22:10:12+08:00">2023-07-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -228,6 +234,44 @@
 <li>使用二进制存储指令和数据。每条指令由操作码和地址码两部分组成</li>
 </ul>
 <h4 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h4><h5 id="中央处理器"><a href="#中央处理器" class="headerlink" title="中央处理器"></a>中央处理器</h5><p>简称CPU，是整个计算机的核心部件，用于指令的执行。CPU分为两个部分：<strong>数据通路</strong>和<strong>控制器</strong></p>
+<p>数据通路：ALU（算数逻辑部件）和通用寄存器</p>
+<p>控制器：对指令进行译码生成相应的信号来控制数据通路进行正确的操作</p>
+<h5 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h5><p>分为外存和内存，内存包括主存储器和高速缓存（cache),外存包括磁盘、固态硬盘等直接和主存交换信息的存储器和一些用于数据备份的海量后备存储器</p>
+<h5 id="外设和设备控制器"><a href="#外设和设备控制器" class="headerlink" title="外设和设备控制器"></a>外设和设备控制器</h5><p>外部设备成为I&#x2F;O设备</p>
+<p>设备控制器统称为I&#x2F;O控制器、I&#x2F;O接口、I&#x2F;O模块 （键盘接口、打印机适配器、显卡、网络控制器（网卡））</p>
+<h5 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h5><p>bus，是传输信息的介质，用于在部件之间传输信息。</p>
+<h2 id="计算机系统抽象层"><a href="#计算机系统抽象层" class="headerlink" title="计算机系统抽象层"></a>计算机系统抽象层</h2><h3 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h3><p>编程语言分为<strong>高级语言</strong> 和 <strong>低级语言</strong>。</p>
+<p>高级语言与底层架构无关，并且大多数语言都是高级语言</p>
+<p>低级语言被称为机器级语言。机器语言和汇编语言都是低级语言</p>
+<p>机器语言是由二进制进行编码的机器指令，每条机器指令都是一个0&#x2F;1序列。使用简单的英文符号和二进制代码建立的关系的语言被称为汇编语言。</p>
+<h3 id="语言处理系统"><a href="#语言处理系统" class="headerlink" title="语言处理系统"></a>语言处理系统</h3><p>高级语言翻译为机器级语言的程序工具被称为语言处理系统</p>
+<h5 id="汇编程序"><a href="#汇编程序" class="headerlink" title="汇编程序"></a>汇编程序</h5><p>也称为汇编器，将汇编语言翻译为机器语言</p>
+<h5 id="解释程序"><a href="#解释程序" class="headerlink" title="解释程序"></a>解释程序</h5><p>解释器，将源程序中的语句按照执行顺序逐条翻译成机器指令</p>
+<h5 id="编译程序"><a href="#编译程序" class="headerlink" title="编译程序"></a>编译程序</h5><p>编译器，将高级语言源程序翻译为汇编语言或者机器语言</p>
+<h3 id="指令集体系架构"><a href="#指令集体系架构" class="headerlink" title="指令集体系架构"></a>指令集体系架构</h3><p>机器语言程序所运行的计算机硬件和软件之间所需要的桥梁，在软件和硬件之间的界面就是指令集体系架构。又称体系结构或者系统结构或者指令体系和指令集架构。</p>
+<h3 id="微体系结构"><a href="#微体系结构" class="headerlink" title="微体系结构"></a>微体系结构</h3><p>具体实现令系统的组织称为微体系结构，简称微架构。微体系结构是软件不可感知的部分。</p>
+<p>微体系结构由逻辑电路实现</p>
+<h2 id="计算机性能评价"><a href="#计算机性能评价" class="headerlink" title="计算机性能评价"></a>计算机性能评价</h2><h3 id="计算机性能的定义"><a href="#计算机性能的定义" class="headerlink" title="计算机性能的定义"></a>计算机性能的定义</h3><p><strong>吞吐率</strong> 和 <strong>响应时间</strong> 是考量计算机性能的两大重要指标</p>
+<p>吞吐率：表示单位时间所完成的工作量</p>
+<p>响应时间：也称为执行时间或者等待时间。表示作业从提交到作业完成的所用时间</p>
+<h3 id="CPU时间和其他时间"><a href="#CPU时间和其他时间" class="headerlink" title="CPU时间和其他时间"></a>CPU时间和其他时间</h3><p>用户CPU时间：真正用于用户程序代码的执行时间</p>
+<p>其他时间：包括CPU运行操作系统程序的时间和等待IO指令的时间以及CPU用于其他程序的执行时间</p>
+<h4 id="CPU性能和系统性能"><a href="#CPU性能和系统性能" class="headerlink" title="CPU性能和系统性能"></a>CPU性能和系统性能</h4><p>CPU性能指的是CPU运行用户程序代码的时间；系统性能和CPU性能的区别在于系统性能是系统相应的时间，与CPU性能有关但不是完全等同。</p>
+<h4 id="CPU时间的几个重要概念"><a href="#CPU时间的几个重要概念" class="headerlink" title="CPU时间的几个重要概念"></a>CPU时间的几个重要概念</h4><h5 id="时钟周期（clock"><a href="#时钟周期（clock" class="headerlink" title="时钟周期（clock)"></a>时钟周期（clock)</h5><p>计算机执行一条指令的过程被分为若干的步骤完成，每一个步骤都需要有相应的控制信号，这些控制信号的发出、作用时间需要和定时信号进行同步。</p>
+<p>计算机产生同步的时钟定时信号，也就是CPU的主脉冲信号宽度就是<strong>时钟周期</strong></p>
+<h5 id="时钟频率"><a href="#时钟频率" class="headerlink" title="时钟频率"></a>时钟频率</h5><p>时钟周期的倒数</p>
+<h5 id="CPI-（cycles-per-instruction"><a href="#CPI-（cycles-per-instruction" class="headerlink" title="CPI （cycles per instruction)"></a>CPI （cycles per instruction)</h5><p>表示执行一条指令所需要的时钟周期数</p>
+<p>​													用户CPU时间 &#x3D; 程序总时钟周期数 ÷ 时钟频率 &#x3D; 程序总时钟周期数 × 时钟周期</p>
+<p>​																程序总时钟周期数 &#x3D; 程序总指令条数 × 综合CPI &#x3D; Σ CPI_i × C_i</p>
+<p>​																综合：用户CPU时间 &#x3D; 程序总指令条数 × CPI × 时钟周期</p>
+<h3 id="通过指令执行速度评估性能"><a href="#通过指令执行速度评估性能" class="headerlink" title="通过指令执行速度评估性能"></a>通过指令执行速度评估性能</h3><h4 id="MIPS"><a href="#MIPS" class="headerlink" title="MIPS"></a>MIPS</h4><p>早起的评估指标是每秒执行了多少条运算指令。通常采用加法指令的速度来作为衡量的标准指令。单位是MIPS(million instruction per second) 意思是平均每秒执行多少百万条指令</p>
+<h4 id="指令平均执行时间"><a href="#指令平均执行时间" class="headerlink" title="指令平均执行时间"></a>指令平均执行时间</h4><p>也称为等效指令速度法或者 Gibson混合法</p>
+<p>设i类指令在总指令中占比为w_i,其执行时间为t_i</p>
+<p>则等效执行时间 &#x3D; Σ w_i × t_i</p>
+<p>若t_i为时钟周期数，则等效执行时间就是<strong>综合CPI</strong></p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>该方法无法在多台机子上进行比较，因为某一功能在A机子上只需要一条指令，而可能在B机子上需要多条指令，其时钟周期数不同。</p>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><h3 id="软件兼容"><a href="#软件兼容" class="headerlink" title="软件兼容"></a>软件兼容</h3><p>分为向上兼容和向下兼容。向上兼容指的是高级机型的代码运行在低级机型中。向下兼容是低级机型的代码运行在高级机型中。</p>
+<p>一般的机型都是满足向下兼容的，原因是高级机型的指令系统往往包含了低级机型的所有指令。</p>
 
       
     </div>
@@ -562,9 +606,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-06-25 11:04:00 / 修改时间：16:04:40" itemprop="dateCreated datePublished" datetime="2023-06-25T11:04:00+08:00">2023-06-25</time>
+      <time title="创建时间：2023-06-25 11:04:00" itemprop="dateCreated datePublished" datetime="2023-06-25T11:04:00+08:00">2023-06-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-06 15:43:30" itemprop="dateModified" datetime="2023-07-06T15:43:30+08:00">2023-07-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -647,6 +697,12 @@
 <td>103</td>
 </tr>
 </tbody></table>
+<h3 id="浮点数的规格化处理"><a href="#浮点数的规格化处理" class="headerlink" title="浮点数的规格化处理"></a>浮点数的规格化处理</h3><p>浮点数的尾数一般都要进行规格化处理</p>
+<p>如果尾数是用原码表示的，那么我们肯定是1.xxxx或者0.xxxx的形式，其中最高位这个1或者0表示的是正数or负数</p>
+<p>于是真正有意义的是小数点右边的一堆数据，但是我们小数点右边的最高位必须为1，这样我们才能表示更多位数的数据</p>
+<p>比如1.1101是合法的，但是1.01101非法</p>
+<p>如果尾数用补码进行表示的话，我们根据原码的规则，对除了最高位的其他位取反并加1，那么，我们可以清楚地发现，</p>
+<p>最后的结果一定是1.0xxx或者0.1xxx形式的数据</p>
 
       
     </div>
